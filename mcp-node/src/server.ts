@@ -20,11 +20,19 @@ server.registerTool(
     inputSchema: {
       html: z.string(),
       title: z.string().default("Ask UI"),
-      width: z.number().default(1024),
-      height: z.number().default(768),
+      // width: z.number().default(1024),
+      height: z.number(),
     },
   },
-  async ({ html, title, width, height }, extra) => {
+  async (
+    {
+      html,
+      title,
+      // width,
+      height,
+    },
+    extra
+  ) => {
     const sessionId = extra.sessionId ?? "";
     const oldSession = sessions.get(sessionId);
     if (oldSession && !oldSession.isFinished()) {
@@ -32,8 +40,8 @@ server.registerTool(
     }
     const session = await createSession(html, {
       title: title,
-      width: width,
-      height: height,
+      width: 720,
+      height,
     });
     sessions.set(sessionId, session);
 
