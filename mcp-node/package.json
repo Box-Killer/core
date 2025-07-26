@@ -16,7 +16,9 @@
     "ask-ui"
   ],
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "author": "Box-Killer",
   "license": "MIT",
