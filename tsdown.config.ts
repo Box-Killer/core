@@ -9,6 +9,11 @@ export default defineConfig({
   target: "es2020",
   minify: true,
   banner: {
-    js: "#!/usr/bin/env node",
+    js: "#!/usr/bin/env node\n",
+  },
+  outExtensions() {
+    return {
+      js: ".mjs",
+    };
   },
 });

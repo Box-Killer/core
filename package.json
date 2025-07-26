@@ -9,7 +9,7 @@
     "release": "bumpp"
   },
   "bin": {
-    "mcp-ask-ui": "dist/mcp-ask-ui.js"
+    "mcp-ask-ui": "dist/mcp-ask-ui.mjs"
   },
   "keywords": [
     "mcp",
