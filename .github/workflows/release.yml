@@ -21,7 +21,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm i -g @antfu/ni
       - run: nci
-      - run: npx pnpm -C ./mcp-node publish --access public --no-git-checks
+      - run: npm publish
+        working-directory: ./mcp-node
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
