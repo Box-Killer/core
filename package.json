@@ -1,6 +1,6 @@
 {
   "name": "mcp-ask-ui",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A MCP server for asking user via UI",
   "main": "index.js",
   "type": "module",
