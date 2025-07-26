@@ -12,7 +12,12 @@ A [MCP](https://modelcontextprotocol.io/) server giving agent the ability to cre
       "args": [
         "-y",
         "mcp-ask-ui"
-      ]
+      ],
+      "env": {
+        "MOONSHOT_API_KEY": "",
+        "PPIO_API_KEY": "",
+        "MINIMAX_API_KEY": ""
+      }
     }
   }
 }

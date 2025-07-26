@@ -22,7 +22,6 @@ jobs:
       - run: npm i -g @antfu/ni
       - run: nci
       - run: npm publish
-        working-directory: ./mcp-node
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
