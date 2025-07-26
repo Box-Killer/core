@@ -1,6 +1,6 @@
 # mcp-ask-ui
 
-A [MCP](https://modelcontextprotocol.io/) server giving agent the ability to create custom UI for user data input.
+A [MCP](https://modelcontextprotocol.io/) server that enables agents to ask users questions via custom user interfaces.
 
 ## Server Config
 
@@ -9,14 +9,11 @@ A [MCP](https://modelcontextprotocol.io/) server giving agent the ability to cre
   "mcpServers": {
     "ask-ui": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-ask-ui"
-      ],
+      "args": ["-y", "mcp-ask-ui"],
       "env": {
-        "MOONSHOT_API_KEY": "",
-        "PPIO_API_KEY": "",
-        "MINIMAX_API_KEY": ""
+        "MOONSHOT_API_KEY": "all keys are optional",
+        "PPIO_API_KEY": "all keys are optional",
+        "MINIMAX_API_KEY": "all keys are optional"
       }
     }
   }
