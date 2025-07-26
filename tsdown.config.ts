@@ -8,4 +8,7 @@ export default defineConfig({
   format: "esm",
   target: "es2020",
   minify: true,
+  banner: {
+    js: "#!/usr/bin/env node",
+  },
 });
