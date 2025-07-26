@@ -1,11 +1,12 @@
 {
   "name": "mcp-ask-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A MCP server for asking user via UI",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "tsdown"
+    "build": "tsdown",
+    "release": "bumpp"
   },
   "bin": {
     "mcp-ask-ui": "dist/mcp-ask-ui.js"
@@ -26,12 +27,13 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.0",
+    "get-port-please": "^3.2.0",
     "webview": "^1.1.0",
-    "zod": "^3",
-    "get-port-please": "^3.2.0"
+    "zod": "^3"
   },
   "devDependencies": {
     "@types/node": "^22.16.5",
+    "bumpp": "^10.2.0",
     "tsdown": "^0.13.0"
   }
 }
