@@ -45,6 +45,11 @@ window.$submit = async function(data) {
       url: `http://localhost:${port}`,
     })
   );
+
+  child.on("exit", () => {
+    resolve(true);
+  });
+
   server.listen(port);
   const session = {
     child,
@@ -54,7 +59,7 @@ window.$submit = async function(data) {
       if (session.result) {
         return JSON.stringify(session.result);
       }
-      if (child.exitCode === null) {
+      if (child.exitCode == null) {
         return "User is still interacting with the UI.";
       }
       return "No result";

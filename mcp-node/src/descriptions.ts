@@ -3,7 +3,7 @@ export const createDesc = `
 
 要求：
 - 界面要求非常美观，交互形式要非常直观恰当丰富，使用 tailwindcss，风格为 geist UI;
-- 注意窗口宽度为 720px，高度要恰当，要足够大，让用户不需要滚动页面;
+- 注意窗口宽度为 720px，高度必须要和body高度一致，body高度必须在样式中固定写出，并足够大甚至略大，必须让用户不需要滚动页面;
 - HTML 里可以包含 JS 脚本，可以访问网络资源;
 - 使用 window.$submit 来提交结果并关闭窗口;
 - 在需要的情况下，推荐使用非常丰富且直观的交互方式，可能包括曲线滑动条等等;
@@ -26,7 +26,7 @@ export const createDesc = `
     }
   </script>
 </head>
-<body>
+<body style="height: 720px;" class="flex items-center justify-center">
   <div class="bg-white/50 backdrop-blur-sm p-8 rounded-xl border border-gray-200/50 shadow-lg">
     <h2 class="text-2xl font-semibold text-center text-gray-900 mb-8">用户信息输入</h2>
     <div class="mb-6">

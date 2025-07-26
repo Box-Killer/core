@@ -19,7 +19,7 @@ const config = {
     }
   </script>
 </head>
-<body>
+<body class="h-120 flex items-center justify-center">
   <div class="bg-white/50 backdrop-blur-sm p-8 rounded-xl border border-gray-200/50 shadow-lg">
     <h2 class="text-2xl font-semibold text-center text-gray-900 mb-8">用户登录</h2>
     <div class="mb-6">

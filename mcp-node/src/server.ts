@@ -41,11 +41,10 @@ server.registerTool(
     const session = await createSession(html, {
       title: title,
       width: 720,
-      height,
+      height: height * 1.5,
     });
     sessions.set(sessionId, session);
 
-    // await new Promise((resolve) => setTimeout(resolve, 10000));
     await session.promise;
 
     return {
