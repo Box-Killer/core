@@ -1,9 +1,26 @@
-export const createDesc = `
-弹出一个 WebView 窗口，并获取用户输入。参数为 HTML。
+export let apiKey: string | undefined;
+export let baseURL: string | undefined;
+export let model: string | undefined;
+if (process.env.MOONSHOT_API_KEY) {
+  apiKey = process.env.MOONSHOT_API_KEY;
+  baseURL = "https://api.moonshot.cn/v1";
+  model = "kimi-k2-0711-preview";
+} else if (process.env.PPIO_API_KEY) {
+  apiKey = process.env.PPIO_API_KEY;
+  baseURL = "https://api.ppinfra.com/v3/openai";
+  model = "deepseek/deepseek-v3-0324";
+} else if (process.env.MINIMAX_API_KEY) {
+  apiKey = process.env.MINIMAX_API_KEY;
+  baseURL = "https://api.minimaxi.com/v1";
+  model = "MiniMax-Text-01";
+}
 
+export const hasAPI = !!apiKey || !!process.env.MINIMAX_API_KEY;
+
+export const uiInstruction = (height: string) => `
 要求：
 - 界面要求非常美观，交互形式要非常直观恰当丰富，使用 tailwindcss，风格为 geist UI;
-- 注意窗口宽度为 720px，高度必须要和body高度一致，body高度必须在样式中固定写出，并足够大甚至略大，必须让用户不需要滚动页面;
+- 注意窗口宽度为 720px，高度${height};
 - HTML 里可以包含 JS 脚本，可以访问网络资源;
 - 使用 window.$submit 来提交结果并关闭窗口;
 - 在需要的情况下，推荐使用非常丰富且直观的交互方式，可能包括曲线滑动条等等;
@@ -38,10 +55,15 @@ export const createDesc = `
     </button>
   </div>
 </body>
-</html>
-`
+</html>`;
+
+export const createDesc = hasAPI
+  ? `该工具使用大语言模型来生成 HTML，并弹出 WebView 窗口，以此获取用户输入。参数为需要生成的页面的自然语言描述，包括标题、需要输入的内容、交互形式等。需要言简意赅但准确完整。`
+  : `该工具通过弹出一个 WebView 窗口，来获取用户输入。参数为 HTML。
+
+${uiInstruction("必须要和body高度一致，body高度必须在样式中固定写出，并足够大甚至略大，必须让用户不需要滚动页面")}`;
 
 export const continueDesc = `
 当调用 create-ask-ui 工具后，用户没有立刻给出结果，则可以调用该工具来再次尝试获取结果。
 该工具可以连续多次调用，直到用户给出结果。
-`
+`;

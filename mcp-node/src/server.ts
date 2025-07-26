@@ -2,7 +2,8 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { createSession } from "./session.ts";
-import { createDesc, continueDesc } from "./descriptions.ts";
+import { createDesc, continueDesc, hasAPI } from "./prompt.ts";
+import { callLLM } from "./llm.ts";
 
 // Create an MCP server
 const server = new McpServer({
@@ -18,7 +19,7 @@ server.registerTool(
     title: "Ask UI",
     description: createDesc,
     inputSchema: {
-      html: z.string(),
+      [hasAPI ? "prompt" : "html"]: z.string(),
       title: z.string().default("Ask UI"),
       // width: z.number().default(1024),
       height: z.number(),
@@ -27,6 +28,7 @@ server.registerTool(
   async (
     {
       html,
+      prompt,
       title,
       // width,
       height,
@@ -38,11 +40,20 @@ server.registerTool(
     if (oldSession && !oldSession.isFinished()) {
       throw new Error("Last session is not finished");
     }
-    const session = await createSession(html, {
-      title: title,
-      width: 720,
-      height: height * 1.5,
-    });
+    if (html && prompt) {
+      throw new Error("html and prompt cannot be set at the same time");
+    }
+    if (!html && !prompt) {
+      throw new Error("html or prompt must be set");
+    }
+    const session = await createSession(
+      (html ?? (await callLLM(prompt as string, height as number))) as string,
+      {
+        title: title,
+        width: 720,
+        height: (height as number) * 1.5,
+      }
+    );
     sessions.set(sessionId, session);
 
     await session.promise;
