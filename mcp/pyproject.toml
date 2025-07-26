@@ -7,5 +7,6 @@ requires-python = ">=3.12"
 dependencies = [
     "mcp[cli]>=1.12.2",
     "pyside6>=6.9.1",
+    "pywebview[qt]>=5.4",
     "ttkthemes>=3.2.2",
 ]
