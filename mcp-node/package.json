@@ -1,0 +1,37 @@
+{
+  "name": "mcp-ask-ui",
+  "version": "1.0.1",
+  "description": "A MCP server for asking user via UI",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsdown"
+  },
+  "bin": {
+    "mcp-ask-ui": "dist/mcp-ask-ui.js"
+  },
+  "keywords": [
+    "mcp",
+    "ask-ui"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "Box-Killer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Box-Killer/core",
+    "directory": "mcp-node"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "webview": "^1.1.0",
+    "zod": "^3",
+    "get-port-please": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.16.5",
+    "tsdown": "^0.13.0"
+  }
+}

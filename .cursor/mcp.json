@@ -1,0 +1,8 @@
+{
+    "mcpServers": {
+        "ask_ui_8": {
+            "command": "node",
+            "args": ["./mcp-node/server.ts"]
+        }
+    }
+}
